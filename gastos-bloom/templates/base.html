@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{% block title %}Gastos Bloom{% endblock %}</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body>
+<header><a class="brand" href="{{ url_for('inicio') }}"><span class="logo">✿</span> Gastos Bloom</a><span class="tag">Mi espacio financiero</span>{% if session.get('usuario') %}<nav><a href="{{ url_for('inicio') }}">Mis gastos</a><a href="{{ url_for('reporte') }}">Reporte</a><form action="{{ url_for('salir') }}" method="post"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="quiet">Cerrar sesión</button></form></nav>{% endif %}</header>
+<main>{% for tipo, mensaje in get_flashed_messages(with_categories=true) %}<div class="alert {{ tipo }}" role="alert">{{ mensaje }}</div>{% endfor %}{% block content %}{% endblock %}</main>
+<footer>Sarai Rut Romero Villanueva · Programación y Desarrollo Web · Práctica Calificada 2<br>Python + Flask + SQLite</footer>
+</body></html>
